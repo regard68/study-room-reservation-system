@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 spring:
   application:
@@ -11,6 +11,11 @@ spring:
     password: ${DB_PASSWORD:}
   thymeleaf:
     cache: false
+  sql:
+    init:
+      mode: ${SQL_INIT_MODE:never}
+      schema-locations: classpath:sql/cloud-schema.sql
+      encoding: UTF-8
 
 mybatis:
   configuration:

@@ -105,3 +105,16 @@ DB_USERNAME=root DB_PASSWORD='' mvn spring-boot:run
 - 管理员首页、用户管理、自习室管理、座位管理、预约管理、公告管理
 
 学生注册只需要用户名和密码，注册成功后会自动登录并进入学生首页。
+
+## Railway 云端部署
+
+项目支持部署到 Railway。应用服务需要设置以下环境变量：
+
+```text
+DB_URL=jdbc:mysql://MySQL主机:端口/数据库名?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false
+DB_USERNAME=MySQL用户名
+DB_PASSWORD=MySQL密码
+SQL_INIT_MODE=always
+```
+
+`SQL_INIT_MODE=always` 会在云端首次启动时自动创建数据表和演示数据。建表脚本使用幂等语句，服务重新启动不会重复创建自习室、座位和公告。
