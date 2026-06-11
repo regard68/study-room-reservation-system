@@ -108,6 +108,8 @@ DB_USERNAME=root DB_PASSWORD='' mvn spring-boot:run
 
 ## Railway 云端部署
 
+在线访问地址：<https://web-production-ef4f7.up.railway.app>
+
 项目支持部署到 Railway。应用服务需要设置以下环境变量：
 
 ```text
