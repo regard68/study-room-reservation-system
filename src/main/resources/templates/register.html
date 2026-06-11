@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>学生注册</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body>
+<main class="auth-page">
+    <section class="auth-brand"><h1>创建学生账号</h1><p>注册后即可查看开放自习室、选择座位与时间段，并管理自己的预约记录。</p></section>
+    <section class="auth-panel">
+        <div class="auth-card">
+            <h2>学生注册</h2><p class="subtitle">请填写基本信息，密码至少 6 位</p>
+            <div th:replace="~{fragments/common :: messages}"></div>
+            <form th:action="@{/register}" method="post">
+                <div class="form-group"><label for="username">用户名</label><input id="username" name="username" th:value="${username}" required maxlength="50" autocomplete="username"></div>
+                <div class="form-group"><label for="password">密码</label><input id="password" type="password" name="password" required minlength="6" autocomplete="new-password"></div>
+                <button class="btn btn-primary btn-block" type="submit">注册账号</button>
+            </form>
+            <div class="auth-foot">已有账号？<a th:href="@{/login}">返回登录</a></div>
+        </div>
+    </section>
+</main>
+</body></html>

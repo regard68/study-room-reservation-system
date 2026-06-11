@@ -1,0 +1,4 @@
+<!DOCTYPE html><html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>系统公告</title><link rel="stylesheet" th:href="@{/css/style.css}"></head><body>
+<div th:replace="~{fragments/common :: topbar}"></div><div class="layout"><aside th:replace="~{fragments/common :: studentSidebar}"></aside><main class="content">
+<div class="page-title"><div><h2>系统公告</h2><p>查看自习室开放安排与使用通知。</p></div></div><div class="card"><article class="notice" th:each="notice:${notices}"><h3 th:text="${notice.title}"></h3><time th:text="${#temporals.format(notice.createTime,'yyyy-MM-dd HH:mm')}"></time><p th:text="${notice.content}"></p></article><div class="empty" th:if="${#lists.isEmpty(notices)}">暂无公告</div></div>
+</main></div></body></html>

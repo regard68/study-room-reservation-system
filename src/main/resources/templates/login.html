@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>用户登录</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body>
+<main class="auth-page">
+    <section class="auth-brand">
+        <h1>让每一次自习都有座</h1>
+        <p>共享自习室预约管理系统为学生提供便捷的座位查询与预约服务，让有限的学习空间得到更高效的利用。</p>
+    </section>
+    <section class="auth-panel">
+        <div class="auth-card">
+            <h2>欢迎登录</h2><p class="subtitle">请输入账号信息进入系统</p>
+            <div th:replace="~{fragments/common :: messages}"></div>
+            <form th:action="@{/login}" method="post">
+                <div class="form-group"><label for="username">用户名</label><input id="username" name="username" th:value="${username}" required placeholder="请输入用户名" autocomplete="username"></div>
+                <div class="form-group"><label for="password">密码</label><input id="password" type="password" name="password" required placeholder="请输入密码" autocomplete="current-password"></div>
+                <button class="btn btn-primary btn-block" type="submit">登录</button>
+            </form>
+            <div class="auth-foot">还没有账号？<a th:href="@{/register}">立即注册</a></div>
+            <div class="auth-foot"><small>演示账号：admin / admin123　student / 123456</small></div>
+        </div>
+    </section>
+</main>
+</body></html>

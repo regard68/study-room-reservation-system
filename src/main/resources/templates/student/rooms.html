@@ -1,0 +1,5 @@
+<!DOCTYPE html><html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>自习室列表</title><link rel="stylesheet" th:href="@{/css/style.css}"></head><body>
+<div th:replace="~{fragments/common :: topbar}"></div><div class="layout"><aside th:replace="~{fragments/common :: studentSidebar}"></aside><main class="content">
+<div class="page-title"><div><h2>自习室列表</h2><p>选择开放的自习室，进入后查看具体座位。</p></div></div><div th:replace="~{fragments/common :: messages}"></div>
+<div class="grid"><article class="room-card" th:each="room:${rooms}"><span class="badge badge-open">开放中</span><h3 th:text="${room.roomName}" style="margin-top:13px"></h3><div class="meta">编号：<span th:text="${room.roomNo}"></span><br>位置：<span th:text="${room.location}"></span><br>开放时间：<span th:text="${room.openTime}"></span><br>座位总数：<span th:text="${room.seatCount}"></span></div><div class="actions"><a class="btn btn-primary" th:href="@{/student/rooms/{id}/seats(id=${room.id})}">查看座位并预约</a></div></article></div><div class="card empty" th:if="${#lists.isEmpty(rooms)}">目前没有开放的自习室，请稍后再来。</div>
+</main></div></body></html>

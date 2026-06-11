@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="topbar">
+    <header class="topbar">
+        <div class="brand">共享自习室预约管理系统</div>
+        <div class="top-user">
+            <span>你好，<strong th:text="${session.loginUser.username}">用户</strong></span>
+            <a th:href="@{/logout}">退出登录</a>
+        </div>
+    </header>
+</div>
+
+<aside th:fragment="studentSidebar" class="sidebar">
+    <div class="section">学生功能</div>
+    <a th:href="@{/student/home}">系统首页</a>
+    <a th:href="@{/student/rooms}">自习室预约</a>
+    <a th:href="@{/student/reservations}">我的预约</a>
+    <a th:href="@{/student/notices}">系统公告</a>
+</aside>
+
+<aside th:fragment="adminSidebar" class="sidebar">
+    <div class="section">管理后台</div>
+    <a th:href="@{/admin/home}">后台首页</a>
+    <a th:href="@{/admin/users}">用户管理</a>
+    <a th:href="@{/admin/rooms}">自习室管理</a>
+    <a th:href="@{/admin/seats}">座位管理</a>
+    <a th:href="@{/admin/reservations}">预约管理</a>
+    <a th:href="@{/admin/notices}">公告管理</a>
+</aside>
+
+<div th:fragment="messages">
+    <div class="alert alert-success" th:if="${success}" th:text="${success}"></div>
+    <div class="alert alert-error" th:if="${error}" th:text="${error}"></div>
+</div>
+</body>
+</html>

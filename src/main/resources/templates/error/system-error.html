@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title th:text="${title}">系统提示</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<main class="auth-page">
+    <section class="auth-brand">
+        <h1>共享自习室预约管理系统</h1>
+        <p>系统遇到了一个暂时无法完成的问题，请根据右侧提示检查后重试。</p>
+    </section>
+    <section class="auth-panel">
+        <div class="auth-card">
+            <h2 th:text="${title}">系统提示</h2>
+            <p class="subtitle" th:text="${message}">请稍后重试。</p>
+            <a class="btn btn-primary btn-block" href="javascript:history.back()">返回上一页</a>
+            <div class="auth-foot"><a th:href="@{/login}">返回登录页</a></div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

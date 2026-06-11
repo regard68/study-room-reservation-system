@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>学生首页</title><link rel="stylesheet" th:href="@{/css/style.css}"></head><body>
+<div th:replace="~{fragments/common :: topbar}"></div><div class="layout"><aside th:replace="~{fragments/common :: studentSidebar}"></aside><main class="content">
+<div class="page-title"><div><h2>学生首页</h2><p>查看自习室开放情况，快速安排今天的学习计划。</p></div><a class="btn btn-primary" th:href="@{/student/rooms}">立即预约</a></div>
+<div th:replace="~{fragments/common :: messages}"></div>
+<section class="stats">
+<a class="stat stat-link" th:href="@{/student/rooms}"><div class="label">开放自习室</div><div class="number" th:text="${#lists.size(rooms)}">0</div><div class="muted">当前可预约</div><div class="stat-action">点击查看</div></a>
+<a class="stat stat-link" th:href="@{/student/reservations}"><div class="label">我的预约</div><div class="number" th:text="${#lists.size(reservations)}">0</div><div class="muted">全部预约记录</div><div class="stat-action">点击查看</div></a>
+<a class="stat stat-link" th:href="@{/student/notices}"><div class="label">系统公告</div><div class="number" th:text="${#lists.size(notices)}">0</div><div class="muted">及时了解通知</div><div class="stat-action">点击查看</div></a>
+<div class="stat"><div class="label">服务状态</div><div class="number">正常</div><div class="muted">预约系统运行中</div></div>
+</section>
+<div class="card"><h3>开放自习室</h3><div class="grid"><article class="room-card" th:each="room:${rooms}"><h3 th:text="${room.roomName}"></h3><div class="meta">位置：<span th:text="${room.location}"></span><br>开放时间：<span th:text="${room.openTime}"></span><br>座位数量：<span th:text="${room.seatCount}"></span></div><div class="actions"><a class="btn btn-primary btn-sm" th:href="@{/student/rooms/{id}/seats(id=${room.id})}">选择座位</a></div></article></div><div class="empty" th:if="${#lists.isEmpty(rooms)}">暂无开放的自习室</div></div>
+<div class="card"><h3>最新公告</h3><div class="notice" th:each="notice,stat:${notices}" th:if="${stat.index < 3}"><h3 th:text="${notice.title}"></h3><time th:text="${#temporals.format(notice.createTime,'yyyy-MM-dd HH:mm')}"></time><p th:text="${notice.content}"></p></div><div class="empty" th:if="${#lists.isEmpty(notices)}">暂无公告</div></div>
+</main></div></body></html>
